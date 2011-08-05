@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  	<head>  		
+  		<title>kandinsky</title>
+  		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+		<script src="js/jquery-1.6.2.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/modernizr.js"></script>
+		<style>
+			div{min-height:100px;}
+			input[type='text']{width:50px;}
+
+			#canvas{background:#EEE;overflow:hidden;}
+			#columns-width{display:inline;}
+
+			.col{float:left;background:gold;height:100px;min-width:40px;}
+		</style>
+	</head>
+	<body>
+		<div style="text-align:center;">
+			<label for="canvas-width">Canvas Width</label>
+			<input id="canvas-width" type="text"></input>
+			<label for="canvas-position">Position</label>
+			<select id="canvas-position">
+				<option value="left">Left</option>
+				<option value="center">Center</option>
+				<option value="right">Right</option>
+			</select>
+			<br><br>
+			<label for="columns">Columns</label>
+			<input id="columns" type="text"></input>
+			<label for="gutter">Gutter</label>
+			<input id="gutter" type="text"></input>
+		</div>
+		<div id="canvas"></div>
+
+
+
+
+
+
+		<script>
+			$(function(){
+				$('#canvas-width').keyup(function(){
+					$('#canvas').css('width', $(this).val());
+				})
+				$('#canvas-position').bind('change keyup', function(){
+					var pos = $(this).val();
+
+					if(pos == 'center')
+							$('#canvas').css('margin','0 auto');
+					if(pos == 'right')
+							$('#canvas').css('margin','0 0 0 auto');
+					if(pos == 'left')
+							$('#canvas').css('margin','0');
+				})
+				$('#columns').keyup(function(){
+					var elem = $(this),
+					gutter = $('#gutter').val()*1,
+					columns = elem.val()*1;
+
+					$('#columns-width').remove();
+					$('#canvas').html('');
+					elem.after('<div id="columns-width">:</div>');
+					for(i=1;i<=columns;i++){
+						$('#columns-width').append('<input type="text" readonly="readonly"></input>');
+						$('#canvas').append('<div class="col"></div>');
+						$('.col').css('width',$('#canvas').width() / columns);
+						$('#gutter').val(10);
+						updateColsWidth();
+						$(".col").not(':last').resizable({
+							minWidth: 40,
+							// maxWidth: $('#canvas').width() - ($('#gutter').val() * (columns - 1)) - (40 * (columns - 1)), 
+							resize: function(event, ui){
+								$(this).css('background','darkred');
+								$(this).css('max-width', maxWidth($(this)));
+								resizeCol($(this));
+							},
+							stop: function(event, ui){
+								$(this).css('background','gold');
+							}
+						});
+					}
+				})
+				$('#gutter').keyup(function(){
+					updateColsWidth();
+				})
+			})
+
+			function updateColsWidth(){
+				var gutter = $('#gutter').val()*1,
+				columns = $('#columns').val()*1,
+				w = $('#canvas').width() - (gutter * (columns - 1) / columns) - calcColsWidth();
+
+				$('.col').css('width',($('#canvas').width() - (gutter * (columns - 1))) / columns);
+				$('.col').not(':last').css('margin-right', gutter);
+				showColumnsWidths();
+			}
+			function showColumnsWidths(){
+				$('#columns-width input').each(function(){
+					$(this).val($('.col').eq($(this).index()).width());
+				})
+			}
+			function resizeCol(elem){
+				var gutter = $('#gutter').val()*1,
+				columns = $('#columns').val()*1,
+				cols = [];
+
+				$('.col').each(function(){
+					if($(this).index() > elem.index()){
+						cols.push($(this));
+					}
+				})
+				$(cols.reverse()).each(function(){
+					if($(this).width() > 40){
+						newColWidth($(this));
+					} else {
+						newColWidth($('.col:last'));
+					}
+				})				
+				showColumnsWidths();
+			}
+			function newColWidth(col){
+				var gutter = $('#gutter').val()*1,
+				columns = $('#columns').val()*1,
+				width = $('#canvas').width() - (gutter * (columns - 1)) - calcColsWidth(col);
+
+				col.css('width', width);
+			}			
+			function calcColsWidth(col){
+				var width = 0;
+
+				$('.col').not(col).each(function(){
+					width += $(this).width();
+				})
+
+				return width;
+			}
+			function maxWidth(col){
+				var width = 0;
+				gutter = $('#gutter').val()*1,
+				columns = $('#columns').val()*1,
+				prevColsWidth = 0,
+				nextCols = [];
+
+				$('.col').not(col).each(function(){
+					if($(this).index() < col.index()){
+						prevColsWidth += $(this).width();
+					}
+					if($(this).index() > col.index()){
+						nextCols.push($(this));
+					}
+				})
+
+				width = $('#canvas').width() - ($('#gutter').val() * (columns - 1)) - prevColsWidth - (40 * nextCols.length);
+
+				return width;
+			}
+		</script>
+
+
+
+	</body>
+</html>
