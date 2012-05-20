@@ -1,0 +1,102 @@
+
+// @import url(http://fonts.googleapis.com/css?family=Economica:700);
+// @import url(http://fonts.googleapis.com/css?family=Rancho);
+// @import url(http://fonts.googleapis.com/css?family=Aladin);
+@import "compass/reset";
+@import "compass/css3/inline-block";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/images";
+
+body {
+	background: #EEE;
+	font: normal 90%/1 arial;
+}
+
+header {
+	padding: 30px 0 20px;
+	margin: 0 auto;
+	text-align: center;
+	font: normal 4em/1 'Aladin', arial;
+	background: #99D5F6;
+	color: #FFF;
+	@include text-shadow(darken(#99D5F6, 50%) 0 1px 1px);
+	@include background(linear-gradient(lighten(#99D5F6, 10%), #99D5F6));
+}
+
+#menu {
+	text-align: center;
+	padding: 1% 0;
+	margin-top: 2px;
+	@include background(linear-gradient(#AAA, #BBB));
+	li {
+		@include inline-block;
+	}
+}
+
+.button {
+	padding: 5px 10px;
+	color: #EEE;
+	cursor: pointer;
+	font: bold 1em 'Economica', arial;
+	@include inline-block;
+	@include border-radius(3px);
+	@include box-shadow(#333 0 1px 0, #CCC 0 -1px 0);
+	@include background(linear-gradient(#555, #333));
+	&:hover, &:focus {
+		background: #333;
+	}
+}
+
+.toolbar {
+	display: none;
+	text-align: center;
+	padding: 1% 0;
+	margin-top: 2px;
+	@include background(linear-gradient(#AAA, #BBB));
+	h2 {
+		float: left;
+		margin: 0 0 0 20px;
+		font: bold 1.5em 'Economica', arial;
+	}
+	label {
+		font: bold 1em 'Economica', arial;
+	}
+	input[type='text'] {
+		width: 50px;
+	}
+	#columns-width {
+		display: inline;
+	}
+}
+
+#page {
+	width: 960px;
+	// padding: 10px;
+	// margin: 2% auto;
+	// background: #DDD;
+	// overflow: hidden;
+	div {
+		min-height: 100px;
+	}
+	.col {
+		float: left;
+		background: #FFF;
+		height: 100px;
+		// padding: 10px;
+		min-width: 40px;
+		position: relative;
+		outline: 0;
+		overflow: hidden;
+		&.resize {
+			background: #FFA;
+		}
+		.ui-resizable-handle {
+			width: 10px;
+			position: absolute;
+			top: 0;
+			right: -10px;
+		}
+	}
+}

@@ -1,0 +1,67 @@
+<!doctype html> 
+<html>
+	<head>
+		<title>GridGen</title>
+		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+		<script src="grid.js"></script>
+		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+		<link href="responsive.gs.24col/responsive-gs-24col.css" media="screen" rel="stylesheet" type="text/css" />
+
+		<!--[if IE]>
+			<link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+		<![endif]-->		
+	</head>
+	<body>
+		<header>GridGen</header>
+		<ul id="menu">
+			<li id="menu-save" class="button">Save</li>
+			<li id="menu-hmtl" class="button">HTML</li>
+			<li id="menu-css" class="button">CSS</li>
+			<li id="menu-page" class="button">Page</li>
+			<li id="menu-insert" class="button">Insert</li>
+			<li id="menu-help" class="button">Help</li>
+		</ul>
+		<div id="page-options" class="toolbar">
+			<h2>Page Options</h2>
+			<label for="page-width">Width</label>
+			<input id="page-width" type="text"></input>
+			<label for="page-position">Position</label>
+			<select id="page-position">
+				<option value="left">Left</option>
+				<option value="center">Center</option>
+				<option value="right">Right</option>
+			</select>
+		</div>
+		<div id="insert-options" class="toolbar">
+			<h2>Insert</h2>
+			<div id="insert-grid" class="button">Layout Grid</div>
+			<div id="insert-content" class="button">Content Area</div>
+			<div id="insert-image" class="button">Image</div>
+		</div>
+		<div id="grid-options" class="toolbar">
+			<h2>Grid Options</h2>
+			<label for="grid-columns">Columns</label>
+			<select id="grid-columns">
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="6">6</option>
+				<option value="8">8</option>
+				<option value="12">12</option>
+			</select>
+			<!-- <label for="grid-gutter">Gutter</label> -->
+			<!-- <input id="grid-gutter" type="text"></input> -->
+		</div>
+		<ul id="insert-position" class="toolbar">
+			<h2>Position</h2>
+			<li id="insert-before" class="button">Before</li>
+			<li id="insert-prepend" class="button">Prepend</li>
+			<li id="insert-append" class="button">Append</li>
+			<li id="insert-after" class="button" >After</li>
+		</ul>
+		<div id="page" class="container row">
+	</body>
+</html>
