@@ -10,7 +10,7 @@
 @import "compass/css3/images";
 
 body {
-	background: #EEE;
+	background: #555;
 	font: normal 90%/1 arial;
 }
 
@@ -29,6 +29,7 @@ header {
 	float: left;
 	// margin: 0 50px 0 0;
 	min-width: 200px;
+	color: #EEE;
 	font: bold 1.5em 'Economica', arial;
 }
 
@@ -36,20 +37,22 @@ header {
 	// text-align: right; 
 	padding: 10px 20px;
 	margin-top: 2px;
-	@include background(linear-gradient(#AAA, #BBB));
+	@include background(linear-gradient(#444, #333));
 	li {
 		@include inline-block;
 	}
 }
 
 .button {
-	padding: 5px 10px;
+	padding: 7px 10px;
 	color: #EEE;
 	cursor: pointer;
 	font: bold 1em 'Economica', arial;
+	border: 1px solid #111;
 	@include inline-block;
 	@include border-radius(3px);
-	@include box-shadow(#333 0 1px 0, #CCC 0 -1px 0);
+	// @include box-shadow(#333 0 1px 0, #CCC 0 -1px 0);
+	@include text-shadow(#111 0 1px 0);
 	@include background(linear-gradient(#555, #333));
 	&:hover, &:focus {
 		background: #333;
@@ -61,15 +64,27 @@ header {
 	// text-align: right;
 	padding: 10px 20px;
 	margin-top: 2px;
-	@include background(linear-gradient(#AAA, #BBB));
+	// @include background(linear-gradient(#444, #333));
+	background: #333;
 	h2 {
 		float: left;
 		// margin: 0 50px 0 0;
 		min-width: 200px;
+		color: #EEE;
 		font: bold 1.5em 'Economica', arial;
 	}
-	label {
-		font: bold 1em 'Economica', arial;
+	.field {
+		padding: 7px 10px;
+		border: 1px solid #111;
+		@include inline-block;
+		@include border-radius(3px);
+		@include text-shadow(#111 0 1px 0);
+		@include background(linear-gradient(#555, #333));
+		label {
+			color: #EEE;
+			font: bold 1em 'Economica', arial;
+			margin-right: 5px;
+		}
 	}
 	input[type='text'] {
 		width: 50px;

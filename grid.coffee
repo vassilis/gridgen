@@ -1,8 +1,19 @@
 
 
+	showSelectedTools = () ->
+		$('#menu-row-settings, #menu-col-settings, #menu-content').show()
+		$('#insert-before, #insert-after').show()
+
+	hideSelectedTools = () ->
+		$('#menu-row-settings, #menu-col-settings, #menu-content').hide()
+		$('#insert-before, #insert-after').hide()
+		$('#row-settings, #col-settings, #content-options').hide()
+
 	$ ->
 
 		body = $('body')
+
+		hideSelectedTools()
 
 		$('#menu .button').not('#menu-container-settings').on 'click', ->
 			$('.toolbar').hide()
@@ -11,7 +22,7 @@
 			$('.toolbar').hide()
 			$('#container-settings').toggle()
 
-		$('#menu-add-row').on 'click', ->
+		$('#menu-new-row').on 'click', ->
 			$('#new-row').show()
 			$('#insert-position').data('o','grid').show()
 
@@ -46,16 +57,19 @@
 			elem = $(this)
 			$('.col.selected').removeClass 'selected'
 			elem.addClass 'selected'
+			showSelectedTools()
 			if $('#col-settings').is(':visible')
 				$('#menu-col-settings').click()
 			else if $('#row-settings').is(':visible')
 				$('#menu-row-settings').click()
 			elem.on 'clickoutside', (e) ->
-				unless $(e.target).parents('.toolbar, #menu').length
-					elem.removeClass 'selected'
-					unless $(e.target).hasClass('col')
-						$('#col-settings, #row-settings').hide()
-					elem.off 'clickoutside'
+				unless $(e.target).hasClass('toolbar')\
+					or $(e.target).attr('id') == 'menu'\
+					or $(e.target).parents('.toolbar, #menu').length
+						elem.removeClass 'selected'
+						unless $(e.target).hasClass('col')
+							hideSelectedTools()
+						elem.off 'clickoutside'
 
 		$('#menu-row-settings').on 'click', ->
 			elem = $('.col.selected')
@@ -76,6 +90,11 @@
 					$('#col-width').append '<option value="' + i + '">' + i + '</option>'
 					i++
 				$('#col-width').val(width).focus()
+
+		$('#menu-content').on 'click', ->
+			elem = $('.col.selected')
+			if elem.length
+				$('#content-options').show()
 
 		$('#col-width').on 'change keyup', (e) ->
 			if $('.col.selected').length and e.which is 46

@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 12, ../sass/screen.scss */
 body {
-  background: #EEE;
+  background: #555;
   font: normal 90%/1 arial;
 }
 
@@ -92,21 +92,22 @@ header {
 #logo {
   float: left;
   min-width: 200px;
+  color: #EEE;
   font: bold 1.5em 'Economica', arial;
 }
 
-/* line 35, ../sass/screen.scss */
+/* line 36, ../sass/screen.scss */
 #menu {
   padding: 10px 20px;
   margin-top: 2px;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaaaa), color-stop(100%, #bbbbbb));
-  background: -webkit-linear-gradient(#aaaaaa, #bbbbbb);
-  background: -moz-linear-gradient(#aaaaaa, #bbbbbb);
-  background: -o-linear-gradient(#aaaaaa, #bbbbbb);
-  background: -ms-linear-gradient(#aaaaaa, #bbbbbb);
-  background: linear-gradient(#aaaaaa, #bbbbbb);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #444444), color-stop(100%, #333333));
+  background: -webkit-linear-gradient(#444444, #333333);
+  background: -moz-linear-gradient(#444444, #333333);
+  background: -o-linear-gradient(#444444, #333333);
+  background: -ms-linear-gradient(#444444, #333333);
+  background: linear-gradient(#444444, #333333);
 }
-/* line 40, ../sass/screen.scss */
+/* line 41, ../sass/screen.scss */
 #menu li {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -119,12 +120,13 @@ header {
   *display: inline;
 }
 
-/* line 45, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 .button {
-  padding: 5px 10px;
+  padding: 7px 10px;
   color: #EEE;
   cursor: pointer;
   font: bold 1em 'Economica', arial;
+  border: 1px solid #111;
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -135,9 +137,7 @@ header {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  -webkit-box-shadow: #333333 0 1px 0, #cccccc 0 -1px 0;
-  -moz-box-shadow: #333333 0 1px 0, #cccccc 0 -1px 0;
-  box-shadow: #333333 0 1px 0, #cccccc 0 -1px 0;
+  text-shadow: #111111 0 1px 0;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #555555), color-stop(100%, #333333));
   background: -webkit-linear-gradient(#555555, #333333);
   background: -moz-linear-gradient(#555555, #333333);
@@ -149,59 +149,83 @@ header {
 .button {
   *display: inline;
 }
-/* line 54, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 .button:hover, .button:focus {
   background: #333;
 }
 
-/* line 59, ../sass/screen.scss */
+/* line 62, ../sass/screen.scss */
 .toolbar {
   display: none;
   padding: 10px 20px;
   margin-top: 2px;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaaaa), color-stop(100%, #bbbbbb));
-  background: -webkit-linear-gradient(#aaaaaa, #bbbbbb);
-  background: -moz-linear-gradient(#aaaaaa, #bbbbbb);
-  background: -o-linear-gradient(#aaaaaa, #bbbbbb);
-  background: -ms-linear-gradient(#aaaaaa, #bbbbbb);
-  background: linear-gradient(#aaaaaa, #bbbbbb);
+  background: #333;
 }
-/* line 65, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 .toolbar h2 {
   float: left;
   min-width: 200px;
+  color: #EEE;
   font: bold 1.5em 'Economica', arial;
 }
-/* line 71, ../sass/screen.scss */
-.toolbar label {
-  font: bold 1em 'Economica', arial;
+/* line 76, ../sass/screen.scss */
+.toolbar .field {
+  padding: 7px 10px;
+  border: 1px solid #111;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: #111111 0 1px 0;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #555555), color-stop(100%, #333333));
+  background: -webkit-linear-gradient(#555555, #333333);
+  background: -moz-linear-gradient(#555555, #333333);
+  background: -o-linear-gradient(#555555, #333333);
+  background: -ms-linear-gradient(#555555, #333333);
+  background: linear-gradient(#555555, #333333);
 }
-/* line 74, ../sass/screen.scss */
+/* line 7, ../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.toolbar .field {
+  *display: inline;
+}
+/* line 83, ../sass/screen.scss */
+.toolbar .field label {
+  color: #EEE;
+  font: bold 1em 'Economica', arial;
+  margin-right: 5px;
+}
+/* line 89, ../sass/screen.scss */
 .toolbar input[type='text'] {
   width: 50px;
 }
-/* line 77, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 .toolbar #columns-width {
   display: inline;
 }
 
-/* line 82, ../sass/screen.scss */
+/* line 97, ../sass/screen.scss */
 #insert-position {
   display: inline;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 #page {
   width: 960px;
   background: #DDD;
   margin-top: 2%;
   margin-bottom: 2%;
 }
-/* line 93, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 #page div {
   min-height: 100px;
 }
-/* line 96, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 #page .col {
   float: left;
   background: #FFF;
@@ -210,7 +234,7 @@ header {
   outline: 0;
   overflow: hidden;
 }
-/* line 105, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 #page .col.selected {
   background: #FFA;
 }

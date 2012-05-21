@@ -1,8 +1,21 @@
 (function() {
+  var hideSelectedTools, showSelectedTools;
+
+  showSelectedTools = function() {
+    $('#menu-row-settings, #menu-col-settings, #menu-content').show();
+    return $('#insert-before, #insert-after').show();
+  };
+
+  hideSelectedTools = function() {
+    $('#menu-row-settings, #menu-col-settings, #menu-content').hide();
+    $('#insert-before, #insert-after').hide();
+    return $('#row-settings, #col-settings, #content-options').hide();
+  };
 
   $(function() {
     var body;
     body = $('body');
+    hideSelectedTools();
     $('#menu .button').not('#menu-container-settings').on('click', function() {
       return $('.toolbar').hide();
     });
@@ -10,7 +23,7 @@
       $('.toolbar').hide();
       return $('#container-settings').toggle();
     });
-    $('#menu-add-row').on('click', function() {
+    $('#menu-new-row').on('click', function() {
       $('#new-row').show();
       return $('#insert-position').data('o', 'grid').show();
     });
@@ -50,17 +63,16 @@
       elem = $(this);
       $('.col.selected').removeClass('selected');
       elem.addClass('selected');
+      showSelectedTools();
       if ($('#col-settings').is(':visible')) {
         $('#menu-col-settings').click();
       } else if ($('#row-settings').is(':visible')) {
         $('#menu-row-settings').click();
       }
       return elem.on('clickoutside', function(e) {
-        if (!$(e.target).parents('.toolbar, #menu').length) {
+        if (!($(e.target).hasClass('toolbar') || $(e.target).attr('id') === 'menu' || $(e.target).parents('.toolbar, #menu').length)) {
           elem.removeClass('selected');
-          if (!$(e.target).hasClass('col')) {
-            $('#col-settings, #row-settings').hide();
-          }
+          if (!$(e.target).hasClass('col')) hideSelectedTools();
           return elem.off('clickoutside');
         }
       });
@@ -87,6 +99,11 @@
         }
         return $('#col-width').val(width).focus();
       }
+    });
+    $('#menu-content').on('click', function() {
+      var elem;
+      elem = $('.col.selected');
+      if (elem.length) return $('#content-options').show();
     });
     return $('#col-width').on('change keyup', function(e) {
       var diff, elem, group, i, s, sw, swnew, w, wnew, _results;
