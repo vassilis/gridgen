@@ -31,6 +31,7 @@ header {
 	min-width: 200px;
 	color: #EEE;
 	font: bold 1.5em 'Economica', arial;
+	@include text-shadow(#000 0 -1px 1px);
 }
 
 #menu {
@@ -52,10 +53,10 @@ header {
 	@include inline-block;
 	@include border-radius(3px);
 	// @include box-shadow(#333 0 1px 0, #CCC 0 -1px 0);
-	@include text-shadow(#111 0 1px 0);
-	@include background(linear-gradient(#555, #333));
+	@include text-shadow(#000 0 -1px 1px);
+	@include background(linear-gradient(#444, #222));
 	&:hover, &:focus {
-		background: #333;
+		background: #111;
 	}
 }
 
@@ -72,6 +73,7 @@ header {
 		min-width: 200px;
 		color: #EEE;
 		font: bold 1.5em 'Economica', arial;
+		@include text-shadow(#000 0 -1px 1px);
 	}
 	.field {
 		padding: 7px 10px;
@@ -79,11 +81,12 @@ header {
 		@include inline-block;
 		@include border-radius(3px);
 		@include text-shadow(#111 0 1px 0);
-		@include background(linear-gradient(#555, #333));
+		@include background(linear-gradient(#444, #222));
 		label {
 			color: #EEE;
 			font: bold 1em 'Economica', arial;
 			margin-right: 5px;
+			@include text-shadow(#000 0 -1px 1px);
 		}
 	}
 	input[type='text'] {
@@ -91,6 +94,10 @@ header {
 	}
 	#columns-width {
 		display: inline;
+	}
+	textarea {
+		width:400px;
+		height: 200px;
 	}
 }
 
@@ -111,7 +118,7 @@ header {
 	.col {
 		float: left;
 		background: #FFF;
-		height: 100px;
+		min-height: 100px;
 		// padding: 10px;
 		// min-width: 40px;
 		position: relative;

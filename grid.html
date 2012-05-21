@@ -24,7 +24,7 @@
 			<li id="menu-new-row" class="button">New Row</li>
 			<li id="menu-row-settings" class="button">Row Settings</li>
 			<li id="menu-col-settings" class="button">Column Settings</li>
-			<li id="menu-css" class="button">Styles</li>
+			<li id="menu-styles" class="button">Styles</li>
 			<li id="menu-content" class="button">Content</li>
 			<!-- <li id="menu-help" class="button">Help</li> -->
 		</ul>
@@ -66,29 +66,51 @@
 		</div>
 		<div id="row-settings" class="toolbar">
 			<h2>Grid Row Settings</h2>
-			<label for="row-id">ID</label>
-			<input id="row-id" type="text"></input>
-			<label for="row-class">CSS Classes</label>
-			<input id="row-class" type="text"></input>
-			<label for="row-bg">Background</label>
-			<input id="row-bg" type="text"></input>
+			<div class="field">
+				<label for="row-id">ID</label>
+				<input id="row-id" type="text"></input>
+			</div>
+			<div class="field">
+				<label for="row-class">CSS Classes</label>
+				<input id="row-class" type="text"></input>
+			</div>
+			<div class="field">
+				<label for="row-bg">Background</label>
+				<input id="row-bg" type="text"></input>
+			</div>
 		</div>
 		<div id="col-settings" class="toolbar">
 			<h2>Column Settings</h2>
-			<label for="col-id">ID</label>
-			<input id="col-id" type="text"></input>
-			<label for="col-class">CSS Classes</label>
-			<input id="col-class" type="text"></input>
-			<label for="col-width">Width</label>
-			<select id="col-width"></select>
-			<label for="col-bg">Background</label>
-			<input id="col-bg" type="text"></input>
+			<div class="field">
+				<label for="col-id">ID</label>
+				<input id="col-id" type="text"></input>
+			</div>
+			<div class="field">
+				<label for="col-class">CSS Classes</label>
+				<input id="col-class" type="text"></input>
+			</div>
+			<div class="field">
+				<label for="col-width">Width</label>
+				<select id="col-width"></select>
+			</div>
+			<div class="field">
+				<label for="col-bg">Background</label>
+				<input id="col-bg" type="text"></input>
+			</div>
 		</div>
 		<div id="content-options" class="toolbar">
 			<h2>Content</h2>
-			<span id="col-html" class="button">Editor</span>
-			<span id="html-templates" class="button">Templates</span>
-			<span id="widgets" class="button">Widgets</span>
+			<span id="menu-editor" class="button">Editor</span>
+			<span id="menu-templates" class="button">Templates</span>
+			<span id="menu-widgets" class="button">Widgets</span>
+		</div>
+		<div id="editor-panel" class="toolbar">
+			<h2>Editor</h2>
+			<textarea id="editor"></textarea>
+		</div>
+		<div id="styles-panel" class="toolbar">
+			<h2>Styles</h2>
+			<textarea id="styles"></textarea>
 		</div>
 		<div id="page" class="container row">
 	</body>

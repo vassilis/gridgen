@@ -26,6 +26,17 @@
 			$('#new-row').show()
 			$('#insert-position').data('o','grid').show()
 
+		$('#menu-styles').on 'click', ->
+			if ! $('#user-styles').length
+				style = $('<style id="user-styles"></style>')
+				style.appendTo('head')
+			$('#styles').val($('#user-styles').val())
+			$('#styles-panel').show()
+
+		$('#menu-editor').on 'click', ->
+			$('#editor').val($('.col.selected').html())
+			$('#editor-panel').show()
+
 		$("#container-width").on 'keyup', ->
 			$("#page").css "width", $(this).val()
 
@@ -44,9 +55,13 @@
 				selectedcol = $('.col.selected')
 				if selectedcol.length
 					selectedrow = selectedcol.closest('.row')
-					if $(e.target).attr('id') == 'insert-before' and selectedcol.length
+					if $(e.target).attr('id') == 'insert-before'
 						selectedrow.before row
-					else if $(e.target).attr('id') == 'insert-after' and selectedcol.length
+					else if $(e.target).attr('id') == 'insert-prepend'
+						selectedcol.prepend row
+					else if $(e.target).attr('id') == 'insert-append'
+						selectedcol.append row
+					else if $(e.target).attr('id') == 'insert-after'
 						selectedrow.after row
 				else if $(e.target).attr('id') == 'insert-prepend'
 					$("#page").prepend row
@@ -128,3 +143,16 @@
 						elem.removeClass('span_' + w).addClass('span_' + wnew).attr('data-width', wnew)
 						s.removeClass('span_' + sw).addClass('span_' + swnew).attr('data-width', swnew)
 					i++
+
+		$('#styles').on 'keypress', ->
+			style = $('#user-styles')
+			style.html($('#styles').val())
+
+		$('#editor').on 'keypress', ->
+			elem = $('.col.selected')
+			if elem.length
+				setTimeout(
+					->
+						elem.html($('#editor').val())
+					, 50
+				)

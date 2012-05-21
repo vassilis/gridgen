@@ -27,6 +27,19 @@
       $('#new-row').show();
       return $('#insert-position').data('o', 'grid').show();
     });
+    $('#menu-styles').on('click', function() {
+      var style;
+      if (!$('#user-styles').length) {
+        style = $('<style id="user-styles"></style>');
+        style.appendTo('head');
+      }
+      $('#styles').val($('#user-styles').val());
+      return $('#styles-panel').show();
+    });
+    $('#menu-editor').on('click', function() {
+      $('#editor').val($('.col.selected').html());
+      return $('#editor-panel').show();
+    });
     $("#container-width").on('keyup', function() {
       return $("#page").css("width", $(this).val());
     });
@@ -46,9 +59,13 @@
         selectedcol = $('.col.selected');
         if (selectedcol.length) {
           selectedrow = selectedcol.closest('.row');
-          if ($(e.target).attr('id') === 'insert-before' && selectedcol.length) {
+          if ($(e.target).attr('id') === 'insert-before') {
             return selectedrow.before(row);
-          } else if ($(e.target).attr('id') === 'insert-after' && selectedcol.length) {
+          } else if ($(e.target).attr('id') === 'insert-prepend') {
+            return selectedcol.prepend(row);
+          } else if ($(e.target).attr('id') === 'insert-append') {
+            return selectedcol.append(row);
+          } else if ($(e.target).attr('id') === 'insert-after') {
             return selectedrow.after(row);
           }
         } else if ($(e.target).attr('id') === 'insert-prepend') {
@@ -105,7 +122,7 @@
       elem = $('.col.selected');
       if (elem.length) return $('#content-options').show();
     });
-    return $('#col-width').on('change keyup', function(e) {
+    $('#col-width').on('change keyup', function(e) {
       var diff, elem, group, i, s, sw, swnew, w, wnew, _results;
       if ($('.col.selected').length && e.which === 46) {
         $('.col.selected').closest('.row').remove();
@@ -149,6 +166,20 @@
           _results.push(i++);
         }
         return _results;
+      }
+    });
+    $('#styles').on('keypress', function() {
+      var style;
+      style = $('#user-styles');
+      return style.html($('#styles').val());
+    });
+    return $('#editor').on('keypress', function() {
+      var elem;
+      elem = $('.col.selected');
+      if (elem.length) {
+        return setTimeout(function() {
+          return elem.html($('#editor').val());
+        }, 50);
       }
     });
   });
