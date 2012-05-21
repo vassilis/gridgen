@@ -89,9 +89,15 @@ header {
 }
 
 /* line 28, ../sass/screen.scss */
+#logo {
+  float: left;
+  min-width: 200px;
+  font: bold 1.5em 'Economica', arial;
+}
+
+/* line 35, ../sass/screen.scss */
 #menu {
-  text-align: center;
-  padding: 1% 0;
+  padding: 10px 20px;
   margin-top: 2px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaaaa), color-stop(100%, #bbbbbb));
   background: -webkit-linear-gradient(#aaaaaa, #bbbbbb);
@@ -100,7 +106,7 @@ header {
   background: -ms-linear-gradient(#aaaaaa, #bbbbbb);
   background: linear-gradient(#aaaaaa, #bbbbbb);
 }
-/* line 33, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
 #menu li {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -113,7 +119,7 @@ header {
   *display: inline;
 }
 
-/* line 38, ../sass/screen.scss */
+/* line 45, ../sass/screen.scss */
 .button {
   padding: 5px 10px;
   color: #EEE;
@@ -143,16 +149,15 @@ header {
 .button {
   *display: inline;
 }
-/* line 47, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 .button:hover, .button:focus {
   background: #333;
 }
 
-/* line 52, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .toolbar {
   display: none;
-  text-align: center;
-  padding: 1% 0;
+  padding: 10px 20px;
   margin-top: 2px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaaaa), color-stop(100%, #bbbbbb));
   background: -webkit-linear-gradient(#aaaaaa, #bbbbbb);
@@ -161,34 +166,42 @@ header {
   background: -ms-linear-gradient(#aaaaaa, #bbbbbb);
   background: linear-gradient(#aaaaaa, #bbbbbb);
 }
-/* line 58, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 .toolbar h2 {
   float: left;
-  margin: 0 0 0 20px;
+  min-width: 200px;
   font: bold 1.5em 'Economica', arial;
 }
-/* line 63, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 .toolbar label {
   font: bold 1em 'Economica', arial;
 }
-/* line 66, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 .toolbar input[type='text'] {
   width: 50px;
 }
-/* line 69, ../sass/screen.scss */
+/* line 77, ../sass/screen.scss */
 .toolbar #columns-width {
   display: inline;
 }
 
-/* line 74, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
+#insert-position {
+  display: inline;
+}
+
+/* line 86, ../sass/screen.scss */
 #page {
   width: 960px;
+  background: #DDD;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
-/* line 80, ../sass/screen.scss */
+/* line 93, ../sass/screen.scss */
 #page div {
   min-height: 100px;
 }
-/* line 83, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 #page .col {
   float: left;
   background: #FFF;
@@ -197,7 +210,7 @@ header {
   outline: 0;
   overflow: hidden;
 }
-/* line 92, ../sass/screen.scss */
+/* line 105, ../sass/screen.scss */
 #page .col.selected {
   background: #FFA;
 }

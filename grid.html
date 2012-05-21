@@ -16,34 +16,28 @@
 		<![endif]-->		
 	</head>
 	<body>
-		<header>GridGen</header>
 		<ul id="menu">
-			<li id="menu-save" class="button">Save</li>
-			<li id="menu-hmtl" class="button">HTML</li>
-			<li id="menu-css" class="button">CSS</li>
-			<li id="menu-page" class="button">Page</li>
-			<li id="menu-insert" class="button">Insert</li>
-			<li id="menu-help" class="button">Help</li>
+			<h2 id="logo">GridGen</h2>
+			<!-- <li id="menu-save" class="button">Save</li> -->
+			<!-- <li id="menu-hmtl" class="button">HTML</li> -->
+			<li id="menu-container-settings" class="button">Container Settings</li>
+			<li id="menu-row-settings" class="button">Row Settings</li>
+			<li id="menu-col-settings" class="button">Column Settings</li>
+			<li id="menu-add-row" class="button">Add Row</li>
+			<li id="menu-css" class="button">Edit CSS</li>
+			<!-- <li id="menu-help" class="button">Help</li> -->
 		</ul>
-		<div id="page-options" class="toolbar">
-			<h2>Page Options</h2>
-			<label for="page-width">Width</label>
-			<input id="page-width" type="text"></input>
-			<!-- <label for="page-position">Position</label> -->
-			<!-- <select id="page-position"> -->
-				<!-- <option value="left">Left</option> -->
-				<!-- <option value="center">Center</option> -->
-				<!-- <option value="right">Right</option> -->
-			<!-- </select> -->
+		<div id="container-settings" class="toolbar">
+			<h2>Container Settings</h2>
+			<label for="container-width">Width</label>
+			<input id="container-width" type="text"></input>
+			<label for="container-padding">Padding</label>
+			<input id="container-padding" type="text"></input>
+			<label for="container-bg">Background</label>
+			<input id="container-bg" type="text"></input>
 		</div>
-		<div id="insert-options" class="toolbar">
-			<h2>Insert</h2>
-			<div id="insert-grid" class="button">Layout Grid</div>
-			<div id="insert-content" class="button">Content Area</div>
-			<div id="insert-image" class="button">Image</div>
-		</div>
-		<div id="grid-options" class="toolbar">
-			<h2>Grid Options</h2>
+		<div id="new-row" class="toolbar">
+			<h2>Add a Grid Row</h2>
 			<label for="grid-columns">Columns</label>
 			<select id="grid-columns">
 				<option value="2">2</option>
@@ -53,20 +47,35 @@
 				<option value="8">8</option>
 				<option value="12">12</option>
 			</select>
-			<!-- <label for="grid-gutter">Gutter</label> -->
-			<!-- <input id="grid-gutter" type="text"></input> -->
+			<ul id="insert-position" class="toolbar">
+				<li id="insert-before" class="button">Before</li>
+				<li id="insert-prepend" class="button">Prepend</li>
+				<li id="insert-append" class="button">Append</li>
+				<li id="insert-after" class="button" >After</li>
+			</ul>
 		</div>
-		<ul id="insert-position" class="toolbar">
-			<h2>Position</h2>
-			<li id="insert-before" class="button">Before</li>
-			<li id="insert-prepend" class="button">Prepend</li>
-			<li id="insert-append" class="button">Append</li>
-			<li id="insert-after" class="button" >After</li>
-		</ul>
-		<div id="col-options" class="toolbar">
-			<h2>Column Options</h2>
+		<div id="row-settings" class="toolbar">
+			<h2>Grid Row Settings</h2>
+			<label for="row-id">ID</label>
+			<input id="row-id" type="text"></input>
+			<label for="row-class">CSS Classes</label>
+			<input id="row-class" type="text"></input>
+			<label for="row-bg">Background</label>
+			<input id="row-bg" type="text"></input>
+		</div>
+		<div id="col-settings" class="toolbar">
+			<h2>Column Settings</h2>
+			<label for="col-id">ID</label>
+			<input id="col-id" type="text"></input>
+			<label for="col-class">CSS Classes</label>
+			<input id="col-class" type="text"></input>
 			<label for="col-width">Width</label>
 			<select id="col-width"></select>
+			<label for="col-bg">Background</label>
+			<input id="col-bg" type="text"></input>
+			<span id="col-html" class="button">Edit Content</span>
+			<span id="html-templates" class="button">Content Templates</span>
+			<span id="widgets" class="button">Widgets</span>
 		</div>
 		<div id="page" class="container row">
 	</body>

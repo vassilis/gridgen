@@ -25,9 +25,16 @@ header {
 	@include background(linear-gradient(lighten(#99D5F6, 10%), #99D5F6));
 }
 
+#logo {
+	float: left;
+	// margin: 0 50px 0 0;
+	min-width: 200px;
+	font: bold 1.5em 'Economica', arial;
+}
+
 #menu {
-	text-align: center;
-	padding: 1% 0;
+	// text-align: right; 
+	padding: 10px 20px;
 	margin-top: 2px;
 	@include background(linear-gradient(#AAA, #BBB));
 	li {
@@ -51,13 +58,14 @@ header {
 
 .toolbar {
 	display: none;
-	text-align: center;
-	padding: 1% 0;
+	// text-align: right;
+	padding: 10px 20px;
 	margin-top: 2px;
 	@include background(linear-gradient(#AAA, #BBB));
 	h2 {
 		float: left;
-		margin: 0 0 0 20px;
+		// margin: 0 50px 0 0;
+		min-width: 200px;
 		font: bold 1.5em 'Economica', arial;
 	}
 	label {
@@ -71,11 +79,16 @@ header {
 	}
 }
 
+#insert-position {
+	display: inline;
+}
+
 #page {
 	width: 960px;
+	background: #DDD;
+	margin-top: 2%;
+	margin-bottom: 2%;
 	// padding: 10px;
-	// margin: 2% auto;
-	// background: #DDD;
 	// overflow: hidden;
 	div {
 		min-height: 100px;

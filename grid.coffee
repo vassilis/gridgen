@@ -1,81 +1,24 @@
 
 
-	updateColsWidth = ->
-		gutter = $("#gutter").val() * 1
-		columns = $("#columns").val() * 1
-		w = $("#canvas").width() - (gutter * (columns - 1) / columns) - calcColsWidth()
-		$(".col").css "width", ($("#canvas").width() - (gutter * (columns - 1))) / columns
-		$(".col").not(":last").css "margin-right", gutter
-		showColumnsWidths()
-
-	showColumnsWidths = ->
-		$("#columns-width input").each ->
-			$(this).val $(".col").eq($(this).index()).width()
-
-	resizeCol = (elem) ->
-		gutter = $("#gutter").val() * 1
-		columns = $("#columns").val() * 1
-		cols = []
-		$(".col").each ->
-			cols.push $(this)  if $(this).index() > elem.index()
-		$(cols.reverse()).each ->
-			if $(this).width() > 40
-				newColWidth $(this)
-			else
-				newColWidth $(".col:last")
-		showColumnsWidths()
-
-	newColWidth = (col) ->
-		gutter = $("#gutter").val() * 1
-		columns = $("#columns").val() * 1
-		width = $("#canvas").width() - (gutter * (columns - 1)) - calcColsWidth(col)
-		col.css "width", width
-
-	calcColsWidth = (col) ->
-		width = 0
-		$(".col").not(col).each ->
-			width += $(this).width()
-		width
-
-	maxWidth = (col) ->
-		width = 0
-		gutter = $("#gutter").val() * 1
-		columns = $("#columns").val() * 1
-		prevColsWidth = 0
-		nextCols = []
-		$(".col").not(col).each ->
-			prevColsWidth += $(this).width()  if $(this).index() < col.index()
-			nextCols.push $(this)  if $(this).index() > col.index()
-		width = $("#canvas").width() - ($("#gutter").val() * (columns - 1)) - prevColsWidth - (40 * nextCols.length)
-		width
-
 	$ ->
 
 		body = $('body')
 
-		$('#menu .button').on 'click', ->
+		$('#menu .button').not('#menu-container-settings').on 'click', ->
 			$('.toolbar').hide()
 
-		$('#menu-page').on 'click', ->
-			$('#page-options').toggle()
+		$('#menu-container-settings').on 'click', ->
+			$('.toolbar').hide()
+			$('#container-settings').toggle()
 
-		$('#menu-insert').on 'click', ->
-			$('#insert-options').toggle()
-
-		$('#insert-grid').on 'click', ->
-			$('#grid-options').show()
+		$('#menu-add-row').on 'click', ->
+			$('#new-row').show()
 			$('#insert-position').data('o','grid').show()
 
-		$("#page-width").on 'keypress', ->
+		$("#container-width").on 'keyup', ->
 			$("#page").css "width", $(this).val()
 
-		# $("#page-position").bind "change keyup", ->
-		# 	pos = $(this).val()
-		# 	$("#page").css "margin", "0 auto"  if pos is "center"
-		# 	$("#page").css "margin", "0 0 0 auto"  if pos is "right"
-		# 	$("#page").css "margin", "0"  if pos is "left"
-
-		$('#insert-append').on 'click', ->
+		$('#insert-before, #insert-prepend, #insert-append, #insert-after').on 'click', (e) ->
 			o = $('#insert-position').data('o')
 			if o == 'grid'
 				columns = eval($("#grid-columns").val())
@@ -87,30 +30,57 @@
 					col = '<div class="col span_' + w + '" data-width="' + w + '"></div>'
 					row.append col
 					i++
-				$("#page").append row
+				selectedcol = $('.col.selected')
+				if selectedcol.length
+					selectedrow = selectedcol.closest('.row')
+					if $(e.target).attr('id') == 'insert-before' and selectedcol.length
+						selectedrow.before row
+					else if $(e.target).attr('id') == 'insert-after' and selectedcol.length
+						selectedrow.after row
+				else if $(e.target).attr('id') == 'insert-prepend'
+					$("#page").prepend row
+				else if $(e.target).attr('id') == 'insert-append'
+					$("#page").append row
 
 		body.on 'click', '.col', ->
 			elem = $(this)
-			if elem.siblings().length
+			$('.col.selected').removeClass 'selected'
+			elem.addClass 'selected'
+			if $('#col-settings').is(':visible')
+				$('#menu-col-settings').click()
+			else if $('#row-settings').is(':visible')
+				$('#menu-row-settings').click()
+			elem.on 'clickoutside', (e) ->
+				unless $(e.target).parents('.toolbar, #menu').length
+					elem.removeClass 'selected'
+					unless $(e.target).hasClass('col')
+						$('#col-settings, #row-settings').hide()
+					elem.off 'clickoutside'
+
+		$('#menu-row-settings').on 'click', ->
+			elem = $('.col.selected')
+			if elem.length
+				row = $('.col.selected').closest('.row')
+				$('#row-settings').show()
+
+		$('#menu-col-settings').on 'click', ->
+			elem = $('.col.selected')
+			if elem.length and elem.siblings().length
 				width = elem.attr('data-width')
 				# $('.col.selected').removeClass 'selected'
-				elem.addClass 'selected'
-				$('#col-options').show()
+				# elem.addClass 'selected'
+				$('#col-settings').show()
 				i = 1
 				$('#col-width').html('')
 				while i <= 24 - elem.siblings().length
 					$('#col-width').append '<option value="' + i + '">' + i + '</option>'
 					i++
 				$('#col-width').val(width).focus()
-				elem.on 'clickoutside', (e) ->
-					unless $(e.target).attr('id') is 'col-width' or $(e.target).parent().attr('id') is 'col-width'
-						elem.removeClass 'selected'
-						elem.off 'clickoutside'
 
 		$('#col-width').on 'change keyup', (e) ->
 			if $('.col.selected').length and e.which is 46
 				$('.col.selected').closest('.row').remove()
-				$('#col-options').hide()
+				$('#col-settings').hide()
 			elem = $('.selected.col')
 			w = eval(elem.attr('data-width'))
 			wnew = eval($(this).val())
