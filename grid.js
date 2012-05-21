@@ -68,6 +68,8 @@
   };
 
   $(function() {
+    var body;
+    body = $('body');
     $('#menu .button').on('click', function() {
       return $('.toolbar').hide();
     });
@@ -85,50 +87,88 @@
       return $("#page").css("width", $(this).val());
     });
     $('#insert-append').on('click', function() {
-      var col, columns, i, o, row;
+      var col, columns, i, o, row, w;
       o = $('#insert-position').data('o');
       if (o === 'grid') {
         columns = eval($("#grid-columns").val());
         row = $('<section class="row span_24"></section>');
         i = 1;
         while (i <= columns) {
-          col = '<div class="col span_' + 24 / columns + '"></div>';
+          w = 24 / columns;
+          col = '<div class="col span_' + w + '" data-width="' + w + '"></div>';
           row.append(col);
           i++;
         }
         return $("#page").append(row);
       }
     });
-    $("#columns").keyup(function() {
-      var columns, elem, gutter, i, _results;
+    body.on('click', '.col', function() {
+      var elem, i, width;
       elem = $(this);
-      gutter = eval($("#gutter").val());
-      columns = eval(elem.val());
-      i = 1;
-      _results = [];
-      while (i <= columns) {
-        $("#canvas").append("<div class=\"col\" contenteditable=\"true\"></div>");
-        $(".col").css("width", $("#canvas").width() / columns);
-        $("#gutter").val(10);
-        updateColsWidth();
-        $(".col").not(":last").resizable({
-          handles: "e",
-          minWidth: 40,
-          resize: function(event, ui) {
-            $(this).addClass('resize');
-            $(this).css("max-width", maxWidth($(this)));
-            return resizeCol($(this));
-          },
-          stop: function(event, ui) {
-            return $(this).removeClass('resize');
+      if (elem.siblings().length) {
+        width = elem.attr('data-width');
+        elem.addClass('selected');
+        $('#col-options').show();
+        i = 1;
+        $('#col-width').html('');
+        while (i <= 24 - elem.siblings().length) {
+          $('#col-width').append('<option value="' + i + '">' + i + '</option>');
+          i++;
+        }
+        $('#col-width').val(width).focus();
+        return elem.on('clickoutside', function(e) {
+          if (!($(e.target).attr('id') === 'col-width' || $(e.target).parent().attr('id') === 'col-width')) {
+            elem.removeClass('selected');
+            return elem.off('clickoutside');
           }
         });
-        _results.push(i++);
       }
-      return _results;
     });
-    return $("#gutter").keyup(function() {
-      return updateColsWidth();
+    return $('#col-width').on('change keyup', function(e) {
+      var diff, elem, group, i, s, sw, swnew, w, wnew, _results;
+      if ($('.col.selected').length && e.which === 46) {
+        $('.col.selected').closest('.row').remove();
+        $('#col-options').hide();
+      }
+      elem = $('.selected.col');
+      w = eval(elem.attr('data-width'));
+      wnew = eval($(this).val());
+      diff = eval(w - wnew);
+      group = [];
+      elem.nextAll().each(function() {
+        return group.push($(this));
+      });
+      elem.prevAll().each(function() {
+        return group.push($(this));
+      });
+      if (diff !== 0) {
+        i = 1;
+        _results = [];
+        while (i <= Math.abs(diff)) {
+          s = '';
+          $(group).each(function(index) {
+            var tw;
+            if (diff < 0) {
+              tw = eval($(this).attr('data-width'));
+              if (tw > 1) {
+                s = $(this);
+                return false;
+              }
+            } else {
+              s = $(this);
+              return false;
+            }
+          });
+          if (s !== '') {
+            sw = eval(s.attr('data-width'));
+            swnew = diff > 0 ? eval(sw + 1) : eval(sw - 1);
+            elem.removeClass('span_' + w).addClass('span_' + wnew).attr('data-width', wnew);
+            s.removeClass('span_' + sw).addClass('span_' + swnew).attr('data-width', swnew);
+          }
+          _results.push(i++);
+        }
+        return _results;
+      }
     });
   });
 

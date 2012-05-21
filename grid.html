@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+		<script src="js/jquery.ba-outside-events.min.js"></script>
 		<script src="grid.js"></script>
 		<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 		<link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
@@ -28,12 +29,12 @@
 			<h2>Page Options</h2>
 			<label for="page-width">Width</label>
 			<input id="page-width" type="text"></input>
-			<label for="page-position">Position</label>
-			<select id="page-position">
-				<option value="left">Left</option>
-				<option value="center">Center</option>
-				<option value="right">Right</option>
-			</select>
+			<!-- <label for="page-position">Position</label> -->
+			<!-- <select id="page-position"> -->
+				<!-- <option value="left">Left</option> -->
+				<!-- <option value="center">Center</option> -->
+				<!-- <option value="right">Right</option> -->
+			<!-- </select> -->
 		</div>
 		<div id="insert-options" class="toolbar">
 			<h2>Insert</h2>
@@ -62,6 +63,11 @@
 			<li id="insert-append" class="button">Append</li>
 			<li id="insert-after" class="button" >After</li>
 		</ul>
+		<div id="col-options" class="toolbar">
+			<h2>Column Options</h2>
+			<label for="col-width">Width</label>
+			<select id="col-width"></select>
+		</div>
 		<div id="page" class="container row">
 	</body>
 </html>

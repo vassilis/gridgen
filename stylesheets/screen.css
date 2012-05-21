@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Economica:700);
+@import url(http://fonts.googleapis.com/css?family=Aladin);
 /* line 17, ../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -191,19 +193,11 @@ header {
   float: left;
   background: #FFF;
   height: 100px;
-  min-width: 40px;
   position: relative;
   outline: 0;
   overflow: hidden;
 }
 /* line 92, ../sass/screen.scss */
-#page .col.resize {
+#page .col.selected {
   background: #FFA;
-}
-/* line 95, ../sass/screen.scss */
-#page .col .ui-resizable-handle {
-  width: 10px;
-  position: absolute;
-  top: 0;
-  right: -10px;
 }

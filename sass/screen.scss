@@ -1,7 +1,7 @@
 
-// @import url(http://fonts.googleapis.com/css?family=Economica:700);
+@import url(http://fonts.googleapis.com/css?family=Economica:700);
 // @import url(http://fonts.googleapis.com/css?family=Rancho);
-// @import url(http://fonts.googleapis.com/css?family=Aladin);
+@import url(http://fonts.googleapis.com/css?family=Aladin);
 @import "compass/reset";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
@@ -85,18 +85,21 @@ header {
 		background: #FFF;
 		height: 100px;
 		// padding: 10px;
-		min-width: 40px;
+		// min-width: 40px;
 		position: relative;
 		outline: 0;
 		overflow: hidden;
-		&.resize {
+		&.selected {
 			background: #FFA;
 		}
-		.ui-resizable-handle {
-			width: 10px;
-			position: absolute;
-			top: 0;
-			right: -10px;
-		}
+		// &.resize {
+		// 	background: #FFA;
+		// }
+		// .ui-resizable-handle {
+		// 	width: 10px;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	right: -10px;
+		// }
 	}
 }

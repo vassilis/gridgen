@@ -51,7 +51,7 @@
 
 	$ ->
 
-		# menu
+		body = $('body')
 
 		$('#menu .button').on 'click', ->
 			$('.toolbar').hide()
@@ -83,36 +83,59 @@
 				row = $('<section class="row span_24"></section>')
 				i = 1
 				while i <= columns
-					col = '<div class="col span_' + 24 / columns + '"></div>'
+					w =  24 / columns 
+					col = '<div class="col span_' + w + '" data-width="' + w + '"></div>'
 					row.append col
 					i++
 				$("#page").append row
 
-		$("#columns").keyup ->
+		body.on 'click', '.col', ->
 			elem = $(this)
-			gutter = eval($("#gutter").val())
-			columns = eval(elem.val())
-			# $("#columns-width").remove()
-			# $("#canvas").html ""
-			# elem.after "<div id=\"columns-width\">:</div>"
-			i = 1
-			while i <= columns
-				# $("#columns-width").append "<input type=\"text\" readonly=\"readonly\"></input>"
-				$("#canvas").append "<div class=\"col\" contenteditable=\"true\"></div>"
-				$(".col").css "width", $("#canvas").width() / columns
-				$("#gutter").val 10
-				updateColsWidth()
-				$(".col").not(":last").resizable
-					handles: "e"
-					minWidth: 40
-					resize: (event, ui) ->
-						$(this).addClass('resize')
-						$(this).css "max-width", maxWidth($(this))
-						resizeCol $(this)
+			if elem.siblings().length
+				width = elem.attr('data-width')
+				# $('.col.selected').removeClass 'selected'
+				elem.addClass 'selected'
+				$('#col-options').show()
+				i = 1
+				$('#col-width').html('')
+				while i <= 24 - elem.siblings().length
+					$('#col-width').append '<option value="' + i + '">' + i + '</option>'
+					i++
+				$('#col-width').val(width).focus()
+				elem.on 'clickoutside', (e) ->
+					unless $(e.target).attr('id') is 'col-width' or $(e.target).parent().attr('id') is 'col-width'
+						elem.removeClass 'selected'
+						elem.off 'clickoutside'
 
-					stop: (event, ui) ->
-						$(this).removeClass('resize')
-				i++
-
-		$("#gutter").keyup ->
-			updateColsWidth()
+		$('#col-width').on 'change keyup', (e) ->
+			if $('.col.selected').length and e.which is 46
+				$('.col.selected').closest('.row').remove()
+				$('#col-options').hide()
+			elem = $('.selected.col')
+			w = eval(elem.attr('data-width'))
+			wnew = eval($(this).val())
+			diff = eval(w - wnew)
+			group = []
+			elem.nextAll().each ->
+				group.push($(this))
+			elem.prevAll().each ->
+				group.push($(this))
+			if diff != 0
+				i = 1
+				while i <= Math.abs(diff)
+					s = ''
+					$(group).each (index) ->
+						if diff < 0
+							tw = eval($(this).attr('data-width'))
+							if tw > 1 
+								s = $(this)
+								return false
+						else
+							s = $(this)
+							return false
+					if s != ''
+						sw = eval(s.attr('data-width'))
+						swnew = if diff > 0 then eval(sw + 1) else eval(sw - 1) 
+						elem.removeClass('span_' + w).addClass('span_' + wnew).attr('data-width', wnew)
+						s.removeClass('span_' + sw).addClass('span_' + swnew).attr('data-width', swnew)
+					i++
