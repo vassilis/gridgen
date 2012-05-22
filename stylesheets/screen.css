@@ -94,13 +94,13 @@ header {
   min-width: 200px;
   color: #EEE;
   font: bold 1.5em 'Economica', arial;
+  cursor: pointer;
   text-shadow: black 0 -1px 1px;
 }
 
-/* line 37, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 #menu {
   padding: 10px 20px;
-  margin-top: 2px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #444444), color-stop(100%, #333333));
   background: -webkit-linear-gradient(#444444, #333333);
   background: -moz-linear-gradient(#444444, #333333);
@@ -108,7 +108,7 @@ header {
   background: -ms-linear-gradient(#444444, #333333);
   background: linear-gradient(#444444, #333333);
 }
-/* line 42, ../sass/screen.scss */
+/* line 43, ../sass/screen.scss */
 #menu li {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -121,7 +121,7 @@ header {
   *display: inline;
 }
 
-/* line 47, ../sass/screen.scss */
+/* line 48, ../sass/screen.scss */
 .button {
   padding: 7px 10px;
   color: #EEE;
@@ -150,19 +150,28 @@ header {
 .button {
   *display: inline;
 }
-/* line 58, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .button:hover, .button:focus {
-  background: #111;
+  color: #333;
+  border: 0;
+  margin: 1px;
+  text-shadow: #cccccc 0 -1px 1px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
+  background: -webkit-linear-gradient(#eeeeee, #aaaaaa);
+  background: -moz-linear-gradient(#eeeeee, #aaaaaa);
+  background: -o-linear-gradient(#eeeeee, #aaaaaa);
+  background: -ms-linear-gradient(#eeeeee, #aaaaaa);
+  background: linear-gradient(#eeeeee, #aaaaaa);
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
 .toolbar {
   display: none;
   padding: 10px 20px;
   margin-top: 2px;
   background: #333;
 }
-/* line 70, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 .toolbar h2 {
   float: left;
   min-width: 200px;
@@ -170,10 +179,11 @@ header {
   font: bold 1.5em 'Economica', arial;
   text-shadow: black 0 -1px 1px;
 }
-/* line 78, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 .toolbar .field {
   padding: 7px 10px;
   border: 1px solid #111;
+  position: relative;
   display: -moz-inline-box;
   -moz-box-orient: vertical;
   display: inline-block;
@@ -196,44 +206,163 @@ header {
 .toolbar .field {
   *display: inline;
 }
-/* line 85, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 .toolbar .field label {
   color: #EEE;
   font: bold 1em 'Economica', arial;
-  margin-right: 5px;
+  margin-right: 7px;
+  float: left;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
   text-shadow: black 0 -1px 1px;
 }
-/* line 92, ../sass/screen.scss */
-.toolbar input[type='text'] {
-  width: 50px;
+/* line 7, ../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.toolbar .field label {
+  *display: inline;
 }
-/* line 95, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
+.toolbar .field .input {
+  margin-right: 10px;
+  min-width: 20px;
+  color: #EEE;
+  float: right;
+  font: bold 1em 'Economica', arial;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+}
+/* line 7, ../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.toolbar .field .input {
+  *display: inline;
+}
+/* line 107, ../sass/screen.scss */
+.toolbar .field .sb {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 20px;
+  height: 15px;
+  text-align: center;
+  color: #FFF;
+  line-height: 15px;
+  cursor: pointer;
+  text-shadow: none;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #444444), color-stop(100%, #222222));
+  background: -webkit-linear-gradient(#444444, #222222);
+  background: -moz-linear-gradient(#444444, #222222);
+  background: -o-linear-gradient(#444444, #222222);
+  background: -ms-linear-gradient(#444444, #222222);
+  background: linear-gradient(#444444, #222222);
+}
+/* line 119, ../sass/screen.scss */
+.toolbar .field .sb:hover, .toolbar .field .sb:focus {
+  color: #333;
+  text-shadow: #cccccc 0 -1px 1px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #aaaaaa));
+  background: -webkit-linear-gradient(#eeeeee, #aaaaaa);
+  background: -moz-linear-gradient(#eeeeee, #aaaaaa);
+  background: -o-linear-gradient(#eeeeee, #aaaaaa);
+  background: -ms-linear-gradient(#eeeeee, #aaaaaa);
+  background: linear-gradient(#eeeeee, #aaaaaa);
+}
+/* line 125, ../sass/screen.scss */
+.toolbar .field .sb-plus {
+  top: 0;
+  border: solid #111;
+  border-width: 0 0 1px 1px;
+  -webkit-border-radius: 0 3px 0 0;
+  -moz-border-radius: 0 3px 0 0;
+  -ms-border-radius: 0 3px 0 0;
+  -o-border-radius: 0 3px 0 0;
+  border-radius: 0 3px 0 0;
+}
+/* line 131, ../sass/screen.scss */
+.toolbar .field .sb-minus {
+  bottom: 0;
+  line-height: 14px;
+  border-left: 1px solid #111;
+  -webkit-border-radius: 0 0 3px 0;
+  -moz-border-radius: 0 0 3px 0;
+  -ms-border-radius: 0 0 3px 0;
+  -o-border-radius: 0 0 3px 0;
+  border-radius: 0 0 3px 0;
+}
+/* line 137, ../sass/screen.scss */
+.toolbar .field ::selection {
+  background: transparent;
+}
+/* line 140, ../sass/screen.scss */
+.toolbar .field ::-moz-selection {
+  background: transparent;
+}
+/* line 144, ../sass/screen.scss */
+.toolbar input[type='text'] {
+  border: 0;
+  float: right;
+  font: bold 1em 'Economica', arial;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cccccc), color-stop(100%, #eeeeee));
+  background: -webkit-linear-gradient(#cccccc, #eeeeee);
+  background: -moz-linear-gradient(#cccccc, #eeeeee);
+  background: -o-linear-gradient(#cccccc, #eeeeee);
+  background: -ms-linear-gradient(#cccccc, #eeeeee);
+  background: linear-gradient(#cccccc, #eeeeee);
+}
+/* line 148, ../sass/screen.scss */
+.toolbar input[type='text'].small {
+  width: 30px;
+}
+/* line 149, ../sass/screen.scss */
+.toolbar input[type='text'].medium {
+  width: 100px;
+}
+/* line 150, ../sass/screen.scss */
+.toolbar input[type='text'].large {
+  width: 180px;
+}
+/* line 151, ../sass/screen.scss */
+.toolbar input[type='text'].adjustable {
+  margin-right: 20px;
+}
+/* line 154, ../sass/screen.scss */
+.toolbar input[type='text']::selection {
+  background: red;
+}
+/* line 157, ../sass/screen.scss */
+.toolbar input[type='text']::-moz-selection {
+  background: lightgreen;
+}
+/* line 161, ../sass/screen.scss */
 .toolbar #columns-width {
   display: inline;
 }
-/* line 98, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 .toolbar textarea {
-  width: 400px;
-  height: 200px;
+  width: 50%;
+  height: 300px;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 #insert-position {
   display: inline;
 }
 
-/* line 108, ../sass/screen.scss */
+/* line 174, ../sass/screen.scss */
 #page {
   width: 960px;
-  background: #DDD;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-/* line 115, ../sass/screen.scss */
-#page div {
-  min-height: 100px;
-}
-/* line 118, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 #page .col {
   float: left;
   background: #FFF;
@@ -242,7 +371,7 @@ header {
   outline: 0;
   overflow: hidden;
 }
-/* line 127, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 #page .col.selected {
   background: #FFA;
 }

@@ -32,22 +32,25 @@
 			<h2>Container Settings</h2>
 			<div class="field">
 				<label for="container-width">Width</label>
-				<input id="container-width" type="text"></input>
+				<input id="container-width" type="text" class="small"></input>
 			</div>
 			<div class="field">
 				<label for="container-padding">Padding</label>
-				<input id="container-padding" type="text"></input>
+				<input id="container-padding" type="text" class="small"></input>
 			</div>
-			<div class="field">
+			<!-- <div class="field">
 				<label for="container-bg">Background</label>
 				<input id="container-bg" type="text"></input>
-			</div>
+			</div> -->
 		</div>
 		<div id="new-row" class="toolbar">
 			<h2>New Row</h2>
 			<div class="field">
 				<label for="grid-columns">Columns</label>
-				<select id="grid-columns">
+				<span id="grid-columns" class="input small adjustable" data-values="1, 2, 3, 4, 6, 8, 12"></span>
+				<span class="sb sb-plus"></span>
+				<span class="sb sb-minus"></span>
+				<!-- <select id="grid-columns">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -55,7 +58,7 @@
 					<option value="6">6</option>
 					<option value="8">8</option>
 					<option value="12">12</option>
-				</select>
+				</select> -->
 			</div>
 			<ul id="insert-position">
 				<li id="insert-before" class="button">Before</li>
@@ -68,35 +71,38 @@
 			<h2>Grid Row Settings</h2>
 			<div class="field">
 				<label for="row-id">ID</label>
-				<input id="row-id" type="text"></input>
+				<input id="row-id" type="text" class="medium"></input>
 			</div>
 			<div class="field">
 				<label for="row-class">CSS Classes</label>
-				<input id="row-class" type="text"></input>
+				<input id="row-class" type="text" class="large"></input>
 			</div>
-			<div class="field">
+			<!-- <div class="field">
 				<label for="row-bg">Background</label>
 				<input id="row-bg" type="text"></input>
-			</div>
+			</div> -->
 		</div>
 		<div id="col-settings" class="toolbar">
 			<h2>Column Settings</h2>
 			<div class="field">
 				<label for="col-id">ID</label>
-				<input id="col-id" type="text"></input>
+				<input id="col-id" type="text" class="medium"></input>
 			</div>
 			<div class="field">
 				<label for="col-class">CSS Classes</label>
-				<input id="col-class" type="text"></input>
+				<input id="col-class" type="text" class="large"></input>
 			</div>
-			<div class="field">
+			<div class="field col-width">
 				<label for="col-width">Width</label>
-				<select id="col-width"></select>
+				<span id="col-width" class="input small adjustable"></span>
+				<span class="sb sb-plus"></span>
+				<span class="sb sb-minus"></span>
+				<!-- <select id="col-width"></select> -->
 			</div>
-			<div class="field">
+			<!-- <div class="field">
 				<label for="col-bg">Background</label>
 				<input id="col-bg" type="text"></input>
-			</div>
+			</div> -->
 		</div>
 		<div id="content-options" class="toolbar">
 			<h2>Content</h2>
