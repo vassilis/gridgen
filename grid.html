@@ -16,107 +16,135 @@
 		<![endif]-->		
 	</head>
 	<body>
-		<ul id="menu">
+		<div id="menu-outer">
 			<h2 id="logo">GridGen</h2>
-			<li id="menu-share" class="button">Share</li>
-			<li id="menu-canvas" class="button">Canvas</li>
-			<li id="menu-container-settings" class="button">Container</li>
-			<li id="menu-new-row" class="button">New Row</li>
-			<li id="menu-row-settings" class="button">Row Settings</li>
-			<li id="menu-col-settings" class="button">Column Settings</li>
-			<li id="menu-styles" class="button">Styles</li>
-			<li id="menu-content" class="button">Content</li>
-			<!-- <li id="menu-help" class="button">Help</li> -->
-		</ul>
-		<div id="container-settings" class="toolbar">
-			<h2>Container Settings</h2>
-			<div class="field">
-				<label for="container-width">Width</label>
-				<input id="container-width" type="text" class="small"></input>
-			</div>
-			<div class="field">
-				<label for="container-padding">Padding</label>
-				<input id="container-padding" type="text" class="small"></input>
-			</div>
-			<!-- <div class="field">
-				<label for="container-bg">Background</label>
-				<input id="container-bg" type="text"></input>
-			</div> -->
-		</div>
-		<div id="new-row" class="toolbar">
-			<h2>New Row</h2>
-			<div class="field">
-				<label for="grid-columns">Columns</label>
-				<span id="grid-columns" class="input small adjustable" data-values="1, 2, 3, 4, 6, 8, 12"></span>
-				<span class="sb sb-plus"></span>
-				<span class="sb sb-minus"></span>
-				<!-- <select id="grid-columns">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="6">6</option>
-					<option value="8">8</option>
-					<option value="12">12</option>
-				</select> -->
-			</div>
-			<ul id="insert-position">
-				<li id="insert-before" class="button">Before</li>
-				<li id="insert-prepend" class="button">Prepend</li>
-				<li id="insert-append" class="button">Append</li>
-				<li id="insert-after" class="button" >After</li>
+			<ul id="menu">
+				<li id="menu-preferences" class="button">Preferences</li>
+				<li id="menu-canvas" class="button">Canvas</li>
+				<li id="menu-container-settings" class="button">Container</li>
+				<li id="menu-row-settings" class="button">Row Settings</li>
+				<li id="menu-col-settings" class="button">Column Settings</li>
+				<li id="menu-styles" class="button">Styles</li>
+				<li id="menu-content" class="button">Content</li>
+				<li id="menu-new-row" class="button">New Row</li>
+				<!-- <li id="menu-help" class="button">Help</li> -->
+				<li id="actions">
+					<ul>
+						<li id="menu-share">Share</li>
+						<li id="menu-download">Download</li>
+					</ul>
+				</li>
 			</ul>
 		</div>
+		<div id="container-settings" class="toolbar">
+			<section>
+				<h2>Container Settings</h2>
+				<div class="field">
+					<label for="container-width">Width</label>
+					<input id="container-width" type="text" class="small"></input>
+				</div>
+				<div class="field">
+					<label for="container-padding">Padding</label>
+					<input id="container-padding" type="text" class="small"></input>
+				</div>
+				<!-- <div class="field">
+					<label for="container-bg">Background</label>
+					<input id="container-bg" type="text"></input>
+				</div> -->
+			</section>
+		</div>
+		<div id="new-row" class="toolbar">
+			<section>
+				<h2>New Row</h2>
+				<div class="field">
+					<label for="grid-columns">Columns</label>
+					<span id="grid-columns" class="input small adjustable" data-values="1, 2, 3, 4, 6, 8, 12"></span>
+					<span class="sb sb-plus"></span>
+					<span class="sb sb-minus"></span>
+					<!-- <select id="grid-columns">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="6">6</option>
+						<option value="8">8</option>
+						<option value="12">12</option>
+					</select> -->
+				</div>
+				<ul id="insert-position">
+					<li id="insert-before" class="button">Before</li>
+					<li id="insert-prepend" class="button">Prepend</li>
+					<li id="insert-append" class="button">Append</li>
+					<li id="insert-after" class="button" >After</li>
+				</ul>
+			</section>
+		</div>
 		<div id="row-settings" class="toolbar">
-			<h2>Grid Row Settings</h2>
-			<div class="field">
-				<label for="row-id">ID</label>
-				<input id="row-id" type="text" class="medium"></input>
-			</div>
-			<div class="field">
-				<label for="row-class">CSS Classes</label>
-				<input id="row-class" type="text" class="large"></input>
-			</div>
-			<!-- <div class="field">
-				<label for="row-bg">Background</label>
-				<input id="row-bg" type="text"></input>
-			</div> -->
+			<section>
+				<h2>Grid Row Settings</h2>
+				<div class="field">
+					<label for="row-id">ID</label>
+					<input id="row-id" type="text" class="medium"></input>
+				</div>
+				<div class="field">
+					<label for="row-class">CSS Classes</label>
+					<input id="row-class" type="text" class="large"></input>
+				</div>
+				<span id="row-delete" class="button">Delete</span>
+				<!-- <div class="field">
+					<label for="row-bg">Background</label>
+					<input id="row-bg" type="text"></input>
+				</div> -->
+			</section>
 		</div>
 		<div id="col-settings" class="toolbar">
-			<h2>Column Settings</h2>
-			<div class="field">
-				<label for="col-id">ID</label>
-				<input id="col-id" type="text" class="medium"></input>
-			</div>
-			<div class="field">
-				<label for="col-class">CSS Classes</label>
-				<input id="col-class" type="text" class="large"></input>
-			</div>
-			<div class="field col-width">
-				<label for="col-width">Width</label>
-				<span id="col-width" class="input small adjustable"></span>
-				<span class="sb sb-plus"></span>
-				<span class="sb sb-minus"></span>
-				<!-- <select id="col-width"></select> -->
-			</div>
-			<!-- <div class="field">
-				<label for="col-bg">Background</label>
-				<input id="col-bg" type="text"></input>
-			</div> -->
+			<section>
+				<h2>Column Settings</h2>
+				<div class="field">
+					<label for="col-id">ID</label>
+					<input id="col-id" type="text" class="medium"></input>
+				</div>
+				<div class="field">
+					<label for="col-class">CSS Classes</label>
+					<input id="col-class" type="text" class="large"></input>
+				</div>
+				<div class="field col-width">
+					<label for="col-width">Width</label>
+					<span id="col-width" class="input small adjustable"></span>
+					<span class="sb sb-plus"></span>
+					<span class="sb sb-minus"></span>
+					<!-- <select id="col-width"></select> -->
+				</div>
+				<!-- <div class="field element">
+					<span style="width:50px;" id="col-element" class="input small adjustable" data-values="div,section,article,header,footer,aside"></span>
+					<span class="sb sb-plus"></span>
+					<span class="sb sb-minus"></span>
+				</div> -->
+				<!-- <div class="field">
+					<label for="col-bg">Background</label>
+					<input id="col-bg" type="text"></input>
+				</div> -->
+			</section>
 		</div>
 		<div id="content-options" class="toolbar">
-			<h2>Content</h2>
-			<span id="menu-editor" class="button">Editor</span>
-			<span id="menu-templates" class="button">Templates</span>
-			<span id="menu-widgets" class="button">Widgets</span>
+			<section>
+				<h2>Content</h2>
+				<span id="menu-editor" class="button">Editor</span>
+				<span id="menu-templates" class="button">Templates</span>
+				<span id="menu-widgets" class="button">Widgets</span>
+			</section>
 		</div>
 		<div id="editor-panel" class="toolbar">
-			<h2>Editor</h2>
-			<textarea id="editor"></textarea>
+			<section>
+				<h2>Editor</h2>
+				<textarea id="editor"></textarea>
+			</section>
 		</div>
 		<div id="styles-panel" class="toolbar">
-			<h2>Styles</h2>
-			<textarea id="styles"></textarea>
+			<section>
+				<h2>Styles</h2>
+				<textarea id="styles"></textarea>
+			</section>
 		</div>
 		<div id="page" class="container row">
 	</body>

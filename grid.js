@@ -3,8 +3,8 @@
     __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   showSelectedTools = function() {
-    $('#menu-row-settings, #menu-col-settings, #menu-content').show();
-    return $('#insert-before, #insert-after').show();
+    $('#menu-row-settings, #menu-col-settings, #menu-content').css('display', 'inline-block');
+    return $('#insert-before, #insert-after').css('display', 'inline-block');
   };
 
   hideSelectedTools = function() {
@@ -64,7 +64,11 @@
     var body;
     body = $('body');
     hideSelectedTools();
-    $('#menu .button, #logo').not('#menu-container-settings').on('click', function() {
+    $('#menu .button').on('click', function() {
+      $('.menu-selected').removeClass('menu-selected');
+      return $(this).addClass('menu-selected');
+    });
+    $('#menu .button').not('#menu-container-settings, .menu-selected').on('click', function() {
       return $('.toolbar').hide();
     });
     $('#menu-container-settings').on('click', function() {
@@ -173,6 +177,7 @@
       $('.col.selected').removeClass('selected');
       elem.addClass('selected');
       showSelectedTools();
+      $('.toolbar').not('#col-settings, #row-settings, #new-row').hide();
       if ($('#col-settings').is(':visible')) {
         $('#menu-col-settings').click();
       } else if ($('#row-settings').is(':visible')) {
@@ -188,6 +193,7 @@
       elem.on('clickoutside', function(e) {
         if (!($(e.target).hasClass('toolbar') || $(e.target).attr('id') === 'menu' || $(e.target).parents('.toolbar, #menu').length)) {
           elem.removeClass('selected');
+          $('.toolbar').not('#new-row').hide();
           if (!$(e.target).hasClass('col')) hideSelectedTools();
           return elem.off('clickoutside');
         }
@@ -248,6 +254,15 @@
         x2 = row.attr('class').match(/span_\d*/g);
         x = x1.concat(x2);
         return row.attr('class', x.toString().replace(/,/g, ' ') + ' ' + elem.val());
+      }
+    });
+    $('#row-delete').on('click', function() {
+      var selectedcol;
+      selectedcol = $('.col.selected');
+      if (selectedcol.length) {
+        $('.col.selected').closest('.row').remove();
+        $('#row-settings').hide();
+        return $('.menu-selected').removeClass('menu-selected');
       }
     });
     $('#col-id').on('keyup', function() {

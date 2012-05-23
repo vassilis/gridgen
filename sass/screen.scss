@@ -8,41 +8,78 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/text-shadow";
 @import "compass/css3/images";
+// @import "compass/css3/transition";
 
 body {
 	background: #555;
 	font: normal 90%/1 arial;
 }
 
-header {
-	padding: 30px 0 20px;
-	margin: 0 auto;
-	text-align: center;
-	font: normal 4em/1 'Aladin', arial;
-	background: #99D5F6;
-	color: #FFF;
-	@include text-shadow(darken(#99D5F6, 50%) 0 1px 1px);
-	@include background(linear-gradient(lighten(#99D5F6, 10%), #99D5F6));
-}
+// header {
+// 	padding: 30px 0 20px;
+// 	margin: 0 auto;
+// 	text-align: center;
+// 	font: normal 4em/1 'Aladin', arial;
+// 	background: #99D5F6;
+// 	color: #FFF;
+// 	@include text-shadow(darken(#99D5F6, 50%) 0 1px 1px);
+// 	@include background(linear-gradient(lighten(#99D5F6, 10%), #99D5F6));
+// }
 
 #logo {
-	float: left;
-	// margin: 0 50px 0 0;
-	min-width: 200px;
+	width: 980px;
+	margin: 0 auto;
+	padding-top: 10px;
 	color: #EEE;
-	font: bold 1.5em 'Economica', arial;
-	cursor: pointer;
+	font: bold 2em 'Economica', arial;
 	@include text-shadow(#000 0 -1px 1px);
 }
 
-#menu {
-	// text-align: right; 
-	padding: 10px 20px;
-	// margin-top: 2px;
+#menu-outer {
+	position: relative;
 	@include background(linear-gradient(#444, #333));
+}
+
+#menu {
+	clear: left;
+	padding: 10px 0;
+	width: 980px;
+	margin: 0 auto;
 	li {
 		@include inline-block;
 	}
+}
+
+#actions {
+	float: right;
+	font: bold 1em 'Economica', arial;
+	li {
+		color: #EEE;
+		display: block;
+		cursor: pointer;
+		border: 1px solid #111;
+		text-transform: uppercase;
+		@include text-shadow(#000 0 1px 1px);
+		@include border-radius(3px);
+		&:hover, &:focus {
+			color: #333;
+			@include text-shadow(#CCC 0 -1px 1px);
+			@include background(linear-gradient(#EEE, #AAA));
+		}
+	}
+}
+
+#menu-download {
+	font-size: 2em;
+	padding: 0 5px;
+	@include background(linear-gradient(#855, #900));
+}
+
+#menu-share {
+	margin: -40px 0 5px;
+	font-size: 2em;
+	padding: 0 5px;
+	@include background(linear-gradient(#444, #222));
 }
 
 .button {
@@ -57,10 +94,12 @@ header {
 	@include text-shadow(#000 0 -1px 1px);
 	@include background(linear-gradient(#444, #222));
 	&:hover, &:focus {
+		background: #444;
+	}
+	&.menu-selected, &:active {
 		color: #333;
-		border: 0;
-		margin: 1px;
-		@include text-shadow(#CCC 0 -1px 1px);
+		// border: 1px solid #AAA;
+		@include text-shadow(none);
 		@include background(linear-gradient(#EEE, #AAA));
 	}
 }
@@ -68,14 +107,17 @@ header {
 .toolbar {
 	display: none;
 	// text-align: right;
-	padding: 10px 20px;
-	margin-top: 2px;
+	margin-top: 1px;
 	// @include background(linear-gradient(#444, #333));
 	background: #333;
+	section {
+		width: 980px;
+		margin: 0 auto;
+		padding: 10px 0;
+	}
 	h2 {
-		float: left;
-		// margin: 0 50px 0 0;
-		min-width: 200px;
+		display: none;
+		margin: 0 0 10px 0;
 		color: #EEE;
 		font: bold 1.5em 'Economica', arial;
 		@include text-shadow(#000 0 -1px 1px);
@@ -84,6 +126,7 @@ header {
 		padding: 7px 10px;
 		border: 1px solid #111;
 		position: relative;
+		height: 16px;
 		@include inline-block;
 		@include border-radius(3px);
 		@include text-shadow(#111 0 1px 0);
@@ -91,18 +134,19 @@ header {
 		label {
 			color: #EEE;
 			font: bold 1em 'Economica', arial;
-			margin-right: 7px;
-			float: left;
-			@include inline-block;
+			margin-right: 4px;
+			// float: left;
+			// @include inline-block;
 			@include text-shadow(#000 0 -1px 1px);
 		}
 		.input {
 			margin-right: 10px;
-			min-width: 20px;
+			min-width: 25px;
 			color: #EEE;
-			float: right;
+			// float: right;
 			font: bold 1em 'Economica', arial;
 			@include inline-block;
+			vertical-align: top;
 		}
 		.sb {
 			position: absolute;
@@ -143,7 +187,8 @@ header {
 	}
 	input[type='text'] {
 		border: 0;
-		float: right;
+		margin: 0;
+		padding: 0;
 		font: bold 1em 'Economica', arial;
 		&.small { width: 30px; }
 		&.medium { width: 100px; }
@@ -187,6 +232,12 @@ header {
 		position: relative;
 		outline: 0;
 		overflow: hidden;
+		.col {
+			background: #EEE;
+		}
+		&:hover {
+			background: lighten(#FFA, 10%);
+		}
 		&.selected {
 			background: #FFA;
 		}

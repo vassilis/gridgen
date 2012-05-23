@@ -1,8 +1,8 @@
 
 
 	showSelectedTools = () ->
-		$('#menu-row-settings, #menu-col-settings, #menu-content').show()
-		$('#insert-before, #insert-after').show()
+		$('#menu-row-settings, #menu-col-settings, #menu-content').css('display','inline-block')
+		$('#insert-before, #insert-after').css('display','inline-block')
 
 	hideSelectedTools = () ->
 		$('#menu-row-settings, #menu-col-settings, #menu-content').hide()
@@ -48,7 +48,11 @@
 
 		hideSelectedTools()
 
-		$('#menu .button, #logo').not('#menu-container-settings').on 'click', ->
+		$('#menu .button').on 'click', ->
+			$('.menu-selected').removeClass('menu-selected')
+			$(this).addClass('menu-selected')
+
+		$('#menu .button').not('#menu-container-settings, .menu-selected').on 'click', ->
 			$('.toolbar').hide()
 
 		$('#menu-container-settings').on 'click', ->
@@ -141,6 +145,7 @@
 			$('.col.selected').removeClass 'selected'
 			elem.addClass 'selected'
 			showSelectedTools()
+			$('.toolbar').not('#col-settings, #row-settings, #new-row').hide()
 			if $('#col-settings').is(':visible')
 				$('#menu-col-settings').click()
 			else if $('#row-settings').is(':visible')
@@ -153,6 +158,7 @@
 					or $(e.target).attr('id') == 'menu'\
 					or $(e.target).parents('.toolbar, #menu').length
 						elem.removeClass 'selected'
+						$('.toolbar').not('#new-row').hide()
 						unless $(e.target).hasClass('col')
 							hideSelectedTools()
 						elem.off 'clickoutside'
@@ -209,6 +215,14 @@
 				x2 = row.attr('class').match(/span_\d*/g)
 				x = x1.concat(x2)
 				row.attr('class', x.toString().replace(/,/g, ' ') + ' ' + elem.val())
+
+		$('#row-delete').on 'click', ->
+			selectedcol = $('.col.selected')
+			if selectedcol.length
+				$('.col.selected').closest('.row').remove()
+				$('#row-settings').hide()
+				$('.menu-selected').removeClass('menu-selected')
+
 
 		$('#col-id').on 'keyup', ->
 			elem = $(this)
